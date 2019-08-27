@@ -34,6 +34,9 @@ public class Main extends Application {
         menSalir = new Menu("Salir");
         mnbMenu.getMenus().addAll(menCompetencia1,menCompetencia2,menSalir);
 
+        mitBuscaMinas = new MenuItem("Busca Minas");
+        menCompetencia1.getItems().addAll(mitBuscaMinas);
+
         contedor.setTop(mnbMenu);
 
         escena = new Scene(contedor,300,60);
