@@ -38,15 +38,17 @@ public class BuscaMinas extends Stage {
         hBox.getChildren().addAll(lblMinas,txtNoMinas,btnGenerar);
 
         grpCampo = new GridPane();
-        arCeldas = new Button[7][7];
-        for (int i = 0; i < 7; i++) {
-            for (int j = 0; j < 7; j++) {
-                arCeldas[i][j] = new Button("Btn"+i+'-'+j);
+        arCeldas = new Button[15][15];
+        for (int i = 0; i < 15; i++) {
+            for (int j = 0; j < 15; j++) {
+                arCeldas[i][j] = new Button();
+                arCeldas[i][j].setPrefSize(25,25);
+                arCeldas[i][j].setStyle("-fx-base: #b6e7c9");
                 grpCampo.add(arCeldas[i][j],i,j);
             }
         }
 
         vBox.getChildren().addAll(hBox,grpCampo);
-        escena = new Scene(vBox,300,400);
+        escena = new Scene(vBox,375,425);
     }
 }

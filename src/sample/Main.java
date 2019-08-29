@@ -1,5 +1,7 @@
 package sample;
 
+import Events.EventoBoton;
+import Views.BuscaMinas;
 import javafx.application.Application;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -24,7 +26,7 @@ public class Main extends Application implements EventHandler {
     private BorderPane contedor;
     private MenuBar mnbMenu;
     private Menu menCompetencia1, menCompetencia2, menSalir;
-    private MenuItem mitBuscaMinas;
+    private MenuItem mitBuscaMinas, mitSalir;
 
     private Button btnEjemplo;
 
@@ -40,20 +42,46 @@ public class Main extends Application implements EventHandler {
         mnbMenu.getMenus().addAll(menCompetencia1,menCompetencia2,menSalir);
 
         mitBuscaMinas = new MenuItem("Busca Minas");
+        mitBuscaMinas.setOnAction(event -> EventosMenu(1));
+
+        mitSalir = new MenuItem("Bye :)");
+        mitSalir.setOnAction(event -> EventosMenu(100));
+        menSalir.getItems().add(mitSalir);
+
         menCompetencia1.getItems().addAll(mitBuscaMinas);
 
-        btnEjemplo = new Button("Ejemplo");
-        contedor.setCenter(btnEjemplo);
-        btnEjemplo.addEventHandler(MouseEvent.MOUSE_CLICKED,this);
+        //btnEjemplo = new Button("Ejemplo");
+        //contedor.setCenter(btnEjemplo);
+
+        //btnEjemplo.addEventHandler(MouseEvent.MOUSE_CLICKED,this);
+        //btnEjemplo.addEventHandler(MouseEvent.MOUSE_CLICKED,new EventoBoton());
+        /*btnEjemplo.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                System.out.println("Manejo de evento directo");
+            }
+        });
+        btnEjemplo.setOnAction(event -> {
+            System.out.println("Manejo de evento lambda");
+        });*/
+        //btnEjemplo.setOnAction(event -> EventosMenu(1));
+        //btnEjemplo2.setOnAction(event-> EventosMenu(2));
 
         contedor.setTop(mnbMenu);
-
         escena = new Scene(contedor,300,60);
 
         primaryStage.setMaximized(true);
         primaryStage.setTitle("Hola mundo de los eventos :)");
         primaryStage.setScene(escena);
         primaryStage.show();
+    }
+
+    private void EventosMenu(int opc) {
+        switch (opc){
+            case 1: new BuscaMinas();   break;
+            case 100: System.exit(0);
+
+        }
     }
 
 
@@ -63,6 +91,6 @@ public class Main extends Application implements EventHandler {
 
     @Override
     public void handle(Event event) {
-        System.out.println("Se dió Click...");
+        BuscaMinas objBM = new BuscaMinas();
     }
 }
