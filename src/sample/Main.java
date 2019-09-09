@@ -1,6 +1,7 @@
 package sample;
 
 import Events.EventoBoton;
+import Events.EventoVentana;
 import Views.BuscaMinas;
 import javafx.application.Application;
 import javafx.event.Event;
@@ -19,8 +20,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
-public class Main extends Application implements EventHandler {
+public class Main extends Application implements EventHandler  {
 
     private Scene escena;
     private BorderPane contedor;
@@ -69,6 +71,10 @@ public class Main extends Application implements EventHandler {
 
         contedor.setTop(mnbMenu);
         escena = new Scene(contedor,300,60);
+        escena.getStylesheets().add(getClass().getResource("../CSS/estilos.css").toExternalForm());
+        escena.getStylesheets().add(getClass().getResource("../CSS/Bootstrap3.css").toExternalForm());
+
+        primaryStage.addEventHandler(WindowEvent.WINDOW_HIDING,new EventoVentana());
 
         primaryStage.setMaximized(true);
         primaryStage.setTitle("Hola mundo de los eventos :)");
