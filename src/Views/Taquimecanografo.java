@@ -23,6 +23,13 @@ public class Taquimecanografo extends Stage{
     private Button btnAbrir;
     private FileChooser flcArchivo;
 
+    private Button[] arTFuncion;
+    private Button[] arTNumeros;
+    private Button[] arTTabulador;
+    private Button[] arTMayus;
+    private Button[] arTShift;
+    private Button[] arTEspacio;
+
     public Taquimecanografo(){
         CrearGUI();
         this.setTitle("Taquimecanografo :)");
@@ -50,11 +57,11 @@ public class Taquimecanografo extends Stage{
         txtEscritura = new TextArea();
         txtEscritura.setPrefRowCount(5);
 
-
-        vbox.getChildren().addAll(tlbMenu,txtTexto,txtEscritura);
-
-
+        /* creamos la seccion del teclado */
         CrearTeclado();
+
+        vbox.getChildren().addAll(tlbMenu,txtTexto,txtEscritura,vTeclado);
+
         escena = new Scene(vbox,400,500);
     }
 
@@ -66,11 +73,30 @@ public class Taquimecanografo extends Stage{
     }
 
     private void CrearTeclado() {
+
+        String[] tecla = {"esc","F1","F2","F3","F4","F5","F6","F7","F8","F9","F10","F11","F12"};
+
         filas = new HBox[6];
         vTeclado = new VBox();
         for (int i = 0; i < 6; i++) {
             filas[i] = new HBox();
             vTeclado.getChildren().add(filas[i]);
+        }
+
+
+        /*String[] tecla = {"esc","F1","F2","F3","F4","F5","F6","F7","F8","F9","F10","F11","F12"};
+        arTFuncion = new Button[13];
+        for (int i = 0; i <13 ; i++) {
+            arTFuncion[i] = new Button(tecla[i]);
+            filas[0].getChildren().add(arTFuncion[i]);
+        }*/
+    }
+
+    private void CrearFila(String[] tecla,Button[] arBotones, HBox hFila){
+        arBotones = new Button[tecla.length];
+        for (int i = 0; i <tecla.length; i++) {
+            arBotones[i] = new Button(tecla[i]);
+            hFila.getChildren().add(arBotones[i]);
         }
     }
 }
