@@ -40,7 +40,18 @@ public class Taquimecanografo extends Stage{
         btnAbrir.setGraphic(new ImageView("Images/open.png"));
         tlbMenu.getItems().add(btnAbrir);
 
-        vbox.getChildren().addAll(tlbMenu);
+        /* caja de texto donde cargaremos el contenido del archivo*/
+        txtTexto = new TextArea();
+        txtTexto.setPrefColumnCount(2); /* revisarlo*/
+        txtTexto.setPrefRowCount(5);
+        txtTexto.setEditable(false);
+
+        /** caja de texto donde capturaremos los eventos del teclado*/
+        txtEscritura = new TextArea();
+        txtEscritura.setPrefRowCount(5);
+
+
+        vbox.getChildren().addAll(tlbMenu,txtTexto,txtEscritura);
 
 
         CrearTeclado();
