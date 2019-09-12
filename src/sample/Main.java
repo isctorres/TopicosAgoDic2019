@@ -3,6 +3,7 @@ package sample;
 import Events.EventoBoton;
 import Events.EventoVentana;
 import Views.BuscaMinas;
+import Views.Taquimecanografo;
 import javafx.application.Application;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -28,7 +29,7 @@ public class Main extends Application implements EventHandler  {
     private BorderPane contedor;
     private MenuBar mnbMenu;
     private Menu menCompetencia1, menCompetencia2, menSalir;
-    private MenuItem mitBuscaMinas, mitSalir;
+    private MenuItem mitBuscaMinas, mitSalir, mitTaqui;
 
     private Button btnEjemplo;
 
@@ -45,12 +46,14 @@ public class Main extends Application implements EventHandler  {
 
         mitBuscaMinas = new MenuItem("Busca Minas");
         mitBuscaMinas.setOnAction(event -> EventosMenu(1));
+        mitTaqui = new MenuItem("Taquimecanógrafo");
+        mitTaqui.setOnAction(event -> EventosMenu(2));
 
         mitSalir = new MenuItem("Bye :)");
         mitSalir.setOnAction(event -> EventosMenu(100));
         menSalir.getItems().add(mitSalir);
 
-        menCompetencia1.getItems().addAll(mitBuscaMinas);
+        menCompetencia1.getItems().addAll(mitBuscaMinas,mitTaqui);
 
         //btnEjemplo = new Button("Ejemplo");
         //contedor.setCenter(btnEjemplo);
@@ -84,7 +87,8 @@ public class Main extends Application implements EventHandler  {
 
     private void EventosMenu(int opc) {
         switch (opc){
-            case 1: new BuscaMinas();   break;
+            case 1: new BuscaMinas();       break;
+            case 2: new Taquimecanografo(); break;
             case 100: System.exit(0);
 
         }
